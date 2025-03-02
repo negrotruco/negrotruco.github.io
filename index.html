@@ -21,23 +21,24 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            width: 100%;
+            width: 90%;
             max-width: 800px;
             opacity: 0;
             animation: fadeInContainer 1s ease-out 0.5s forwards;
         }
         .logo-section {
-            /* Añadimos este nuevo contenedor para controlar la posición vertical general */
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 80px; /* Ajusta este valor para bajar el logo */
+            margin-top: 5vh;
         }
         .logo-container {
             display: flex;
             position: relative;
-            width: 500px;
-            height: 500px;
+            width: 50vw;
+            height: 50vw;
+            max-width: 400px;
+            max-height: 400px;
             justify-content: center;
             opacity: 0;
             animation: fadeInContainer 1s ease-out 1.5s forwards;
@@ -57,16 +58,13 @@
             animation: slideInLeftLogo 1.5s ease-out 2s forwards;
             background-image: url('fila-1-columna-1.jpg');
             background-position: right center;
-            border-right: 0;
         }
         .logo-right {
             right: -50%;
             animation: slideInRightLogo 1.5s ease-out 2s forwards;
             background-image: url('fila-1-columna-2.jpg');
             background-position: left center;
-            border-left: 0;
         }
-        /* Efecto de brillo cuando las partes se unen */
         .logo-glow {
             position: absolute;
             width: 100%;
@@ -82,10 +80,11 @@
             justify-content: center;
             width: 100%;
             position: absolute;
-            top: 340px;
+            top: 50vh;
         }
         .stars-left, .stars-right {
-            width: 300px;
+            width: 25vw;
+            max-width: 150px;
             height: auto;
             position: absolute;
             top: 50%;
@@ -93,81 +92,65 @@
             opacity: 0;
         }
         .stars-left {
-            left: -100px;
+            left: -15vw;
             animation: slideInLeft 1s ease-out 2s forwards;
         }
         .stars-right {
-            right: -100px;
+            right: -15vw;
             animation: slideInRight 1s ease-out 2s forwards;
         }
         .button {
-            margin-top: 40px;
-    padding: 15px 40px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50px; /* Increase this value for more curvature */
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    opacity: 0;
-    animation: slideInButton 1s ease-out 3.5s forwards;
-    width: 80%; /* Make the button wider */
-    max-width: 500px; /* Limit maximum width */
-    text-align: center; /* Center the text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+            margin-top: 5vh;
+            padding: 12px 30px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0;
+            animation: slideInButton 1s ease-out 3.5s forwards;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .button:hover {
             background-color: darkred;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        @keyframes fadeInContainer {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        @keyframes slideInLeftLogo {
-            0% { left: -50%; }
-            80% { left: -2%; }
-            100% { left: 0; }
-        }
-        @keyframes slideInRightLogo {
-            0% { right: -50%; }
-            80% { right: -2%; }
-            100% { right: 0; }
-        }
+        /* Animaciones */
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fadeInContainer { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes slideInLeftLogo { 0% { left: -50%; } 100% { left: 0; } }
+        @keyframes slideInRightLogo { 0% { right: -50%; } 100% { right: 0; } }
         @keyframes logoGlow {
-            0% { 
-                opacity: 0; 
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); 
-            }
-            20% { 
-                opacity: 1; 
-                box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7); 
-            }
-            80% { 
-                opacity: 1; 
-                box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7); 
-            }
-            100% { 
-                opacity: 0; 
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); 
-            }
+            0% { opacity: 0; box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+            20% { opacity: 1; box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7); }
+            100% { opacity: 0; box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
         }
-        @keyframes slideInLeft {
-            0% { opacity: 0; transform: translateX(-100%) translateY(-50%); }
-            100% { opacity: 1; transform: translateX(0) translateY(-50%); }
-        }
-        @keyframes slideInRight {
-            0% { opacity: 0; transform: translateX(100%) translateY(-50%); }
-            100% { opacity: 1; transform: translateX(0) translateY(-50%); }
-        }
-        @keyframes slideInButton {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes slideInLeft { 0% { opacity: 0; transform: translateX(-100%) translateY(-50%); } 100% { opacity: 1; transform: translateX(0) translateY(-50%); } }
+        @keyframes slideInRight { 0% { opacity: 0; transform: translateX(100%) translateY(-50%); } 100% { opacity: 1; transform: translateX(0) translateY(-50%); } }
+        @keyframes slideInButton { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* 📱 Estilos Responsivos */
+        @media (max-width: 600px) {
+            .logo-container {
+                width: 60vw;
+                height: 60vw;
+            }
+            .stars-container {
+                top: 40vh;
+            }
+            .stars-left, .stars-right {
+                width: 20vw;
+                max-width: 100px;
+            }
+            .button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
@@ -179,13 +162,11 @@
                 <div class="logo-part logo-right"></div>
                 <div class="logo-glow"></div>
             </div>
-            
             <div class="stars-container">
                 <img src="aguila.jpg_estrellas-removebg-preview.png" alt="Estrellas Izquierda" class="stars-left">
                 <img src="aguila_estrellas_2.jpg_-removebg-preview-removebg-preview.png" alt="Estrellas Derecha" class="stars-right">
             </div>
         </div>
-        
         <button class="button" onclick="location.href='inicio.html'">INICIO</button>
     </div>
 </body>
