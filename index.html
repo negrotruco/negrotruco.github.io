@@ -5,46 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animación SWAT</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            overflow: hidden;
+            padding: 0;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('Imagen de WhatsApp 2025-03-01 a las 20.51.25_635841e5.jpg') no-repeat center center/cover;
+            overflow: hidden;
+            background: url('Imagen_de_fondo.jpg') no-repeat center center/cover;
             animation: fadeIn 1s ease-out forwards;
         }
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
             width: 90%;
             max-width: 800px;
             opacity: 0;
             animation: fadeInContainer 1s ease-out 0.5s forwards;
         }
+
         .logo-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 5vh;
         }
+
         .logo-container {
             display: flex;
             position: relative;
             width: 50vw;
             height: 50vw;
-            max-width: 400px;
-            max-height: 400px;
+            max-width: 300px;
+            max-height: 300px;
             justify-content: center;
-            opacity: 0;
-            animation: fadeInContainer 1s ease-out 1.5s forwards;
             border-radius: 50%;
             overflow: hidden;
+            animation: fadeInContainer 1s ease-out 1.5s forwards;
         }
+
         .logo-part {
             width: 50%;
             height: 100%;
@@ -53,18 +60,19 @@
             background-size: cover;
             top: 0;
         }
+
         .logo-left {
             left: -50%;
             animation: slideInLeftLogo 1.5s ease-out 2s forwards;
             background-image: url('fila-1-columna-1.jpg');
-            background-position: right center;
         }
+
         .logo-right {
             right: -50%;
             animation: slideInRightLogo 1.5s ease-out 2s forwards;
             background-image: url('fila-1-columna-2.jpg');
-            background-position: left center;
         }
+
         .logo-glow {
             position: absolute;
             width: 100%;
@@ -73,32 +81,36 @@
             box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
             opacity: 0;
             animation: logoGlow 1s ease-out 3.5s forwards;
-            pointer-events: none;
         }
+
         .stars-container {
             display: flex;
             justify-content: center;
             width: 100%;
             position: absolute;
-            top: 50vh;
+            top: 45vh;
         }
+
         .stars-left, .stars-right {
-            width: 25vw;
-            max-width: 150px;
+            width: 20vw;
+            max-width: 100px;
             height: auto;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             opacity: 0;
         }
+
         .stars-left {
             left: -15vw;
             animation: slideInLeft 1s ease-out 2s forwards;
         }
+
         .stars-right {
             right: -15vw;
             animation: slideInRight 1s ease-out 2s forwards;
         }
+
         .button {
             margin-top: 5vh;
             padding: 12px 30px;
@@ -112,10 +124,11 @@
             opacity: 0;
             animation: slideInButton 1s ease-out 3.5s forwards;
             width: 80%;
-            max-width: 300px;
+            max-width: 250px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+
         .button:hover {
             background-color: darkred;
         }
@@ -137,15 +150,17 @@
         /* 📱 Estilos Responsivos */
         @media (max-width: 600px) {
             .logo-container {
-                width: 60vw;
-                height: 60vw;
+                width: 65vw;
+                height: 65vw;
+                max-width: 250px;
+                max-height: 250px;
             }
             .stars-container {
-                top: 40vh;
+                top: 42vh;
             }
             .stars-left, .stars-right {
-                width: 20vw;
-                max-width: 100px;
+                width: 18vw;
+                max-width: 80px;
             }
             .button {
                 font-size: 1em;
