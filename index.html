@@ -3,241 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animación SWAT</title>
+    <título>Animación SWAT</título>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url('Imagen de WhatsApp 2025-03-01 a las 20.51.25_635841e5.jpg') no-repeat center center/cover;
-            animation: fadeIn 1s ease-out forwards;
+        cuerpo {
+            margen: 0;
+            desbordamiento: oculto;
+            pantalla: flex;
+            justificar-contenido: centro;
+            alinee-artículos: centro;
+            altura: 100vh;
+            antecedentes: url('Imagen de WhatsApp 2025-03-01 a las 20.51.25_635841e5.jpg') no-repetir centro centro/cubierta;
+            animación: fadeIn 1s ease-out forwards;
         }
-        
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            opacity: 0;
-            animation: fadeInContainer 1s ease-out 0.5s forwards;
+            pantalla: flex;
+            flex-dirección: columna;
+            alinee-artículos: centro;
+            justificar-contenido: centro;
+            posición:relativo;
+            ancho: 100%;
+            ancho máximo: 800px;
+            opacidad: 0;
+            animación: fadeInContainer 1s ease-out 0.5s forwards;
         }
-        
-        .logo-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 5vh; /* Uso de unidades relativas para mejor responsividad */
-            width: 100%;
+        .logo-sección {
+            /* Añadimos este nuevo contenedor para controlar la posición vertical general */
+            pantalla: flex;
+            flex-dirección: columna;
+            alinee-artículos: centro;
+            margen-top: 80px; /* Ajusta este valor para bajar el logo */
         }
-        
-        .logo-container {
-            display: flex;
-            position: relative;
-            width: 80vw; /* Ancho relativo al viewport */
-            max-width: 500px; /* Tamaño máximo */
-            height: 80vw; /* Mantener proporción */
-            max-height: 500px;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeInContainer 1s ease-out 1.5s forwards;
-            border-radius: 50%;
-            overflow: hidden;
+        .logo-contenedor {
+            pantalla: flex;
+            posición: relativa;
+            ancho: 500px;
+            altura: 500px;
+            justificar-contenido: centro;
+            opacidad: 0;
+            animación: fadeInContainer 1s ease-out 1.5s forwards;
+            radio-frontera: 50%;
+            desbordamiento: oculto;
         }
-        
         .logo-part {
-            width: 50%;
-            height: 100%;
-            position: absolute;
-            background-position: center;
-            background-size: cover;
-            top: 0;
+            ancho: 50%;
+            altura: 100%;
+            posición: absoluta;
+            posición de fondo: centro;
+            tamaño del fondo: cubierta;
+            arriba: 0;
         }
-        
         .logo-left {
-            left: -50%;
-            animation: slideInLeftLogo 1.5s ease-out 2s forwards;
-            background-image: url('fila-1-columna-1.jpg');
-            background-position: center right;
-            border-right: 0;
+            izquierda: -50%;
+            animación: slideInLeftLogo 1.5s ease-out 2s forwards;
+            imagen de fondo: url('fila-1-columna-1.jpg');
+            posición de fondo: centro derecho;
+            frontera-derecha: 0;
         }
-        
-        .logo-right {
-            right: -50%;
-            animation: slideInRightLogo 1.5s ease-out 2s forwards;
-            background-image: url('fila-1-columna-2.jpg');
-            background-position: center left;
-            border-left: 0;
+        .logo-derecha {
+            derecho: - 50%;
+            animación: slideInRightLogo 1.5s ease-out 2s forwards;
+            imagen de fondo: url('fila-1-columna-2.jpg');
+            posición de fondo: centro izquierdo;
+            frontera-izquierda: 0;
         }
-        
+        /* Efecto de brillo cuando las partes se unen */
         .logo-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-            opacity: 0;
-            animation: logoGlow 1s ease-out 3.5s forwards;
-            pointer-events: none;
+            posición:absoluto;
+            ancho: 100%;
+            altura: 100%;
+            radio-frontera: 50%;
+            sombra de caja: 0 0 0 0 rgba(255, 215, 0, 0);
+            opacidad: 0;
+            animación: logoGlow 1s ease-out 3.5s forwards;
+            punteros: ninguno;
         }
-        
-        .stars-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            position: absolute;
-            top: 70%; /* Posición relativa */
+        .stars-contenedor {
+            pantalla: flex;
+            justificar-contenido: centro;
+            ancho: 100%;
+            posición: absoluta;
+            superior: 340px;
         }
-        
-        .stars-left, .stars-right {
-            width: 40%; /* Tamaño relativo */
-            max-width: 300px;
-            height: auto;
-            position: absolute;
+        .stars-izquierda, .stars-derecha {
+            ancho: 300px;
+            altura: auto;
+            posición: absoluta;
             top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
+            transformar: translateY(-50%);
+            opacidad: 0;
         }
-        
         .stars-left {
-            left: -15%;
-            animation: slideInLeft 1s ease-out 2s forwards;
+            izquierda: -100px;
+            animación: slideInLeft 1s ease-out 2s forwards;
         }
-        
         .stars-right {
-            right: -15%;
-            animation: slideInRight 1s ease-out 2s forwards;
+            derecha: -100px;
+            animación: slideInRight 1s ease-out 2s forwards;
         }
-        
-        .button {
-            margin-top: 5vh; /* Margen relativo */
-            padding: 15px 40px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: clamp(16px, 3vw, 20px); /* Tamaño de texto responsivo */
-            cursor: pointer;
-            transition: 0.3s;
-            opacity: 0;
-            animation: slideInButton 1s ease-out 3.5s forwards;
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        .botón {
+            margen superior: 40px;
+            relleno: 15px 40px;
+            color de fondo: rojo;
+            color: blanco;
+            frontera: ninguna;
+            border-radius: 50px; /* Aumente este valor para más curvatura */
+            tamaño de fuente: 20px;
+            cursor: puntero;
+            transición: 0.3s;
+            opacidad: 0;
+            animación: slideInButton 1s ease-out 3.5s forwards;
+            ancho: 80%; /* Hacer el botón más ancho */
+            ancho máximo: 500px; /* Límite ancho máximo */
+            texto-alinear: centro; /* Centrar el texto */
+            sombra de caja: 0 4px 8px rgba(0, 0, 0, 0.3); /* Añadir sombra para profundidad */
         }
-        
         .button:hover {
-            background-color: darkred;
-        }
-
-        /* Media queries para ajustes específicos */
-        @media (max-width: 768px) {
-            .logo-container {
-                width: 70vw;
-                height: 70vw;
-            }
-            
-            .stars-container {
-                top: 65%;
-            }
-            
-            .stars-left, .stars-right {
-                width: 35%;
-            }
-            
-            .button {
-                width: 90%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo-section {
-                margin-top: 3vh;
-            }
-            
-            .logo-container {
-                width: 80vw;
-                height: 80vw;
-            }
-            
-            .stars-container {
-                top: 70%;
-            }
-            
-            .stars-left {
-                left: -10%;
-            }
-            
-            .stars-right {
-                right: -10%;
-            }
-            
-            .button {
-                margin-top: 8vh;
-                padding: 12px 30px;
-            }
+            color de fondo: oscuro;
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% { opacidad: 0;}
+            100% { opacidad: 1; }
         }
-        
         @keyframes fadeInContainer {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% { opacidad: 0; }
+            100% { opacidad: 1; }
         }
-        
         @keyframes slideInLeftLogo {
             0% { left: -50%; }
             80% { left: -2%; }
             100% { left: 0; }
         }
-        
         @keyframes slideInRightLogo {
-            0% { right: -50%; }
-            80% { right: -2%; }
-            100% { right: 0; }
+            0% { derecha: -50%; }
+            80% { a la derecha: -2%; }
+            100% { a la derecha: 0; }
         }
-        
         @keyframes logoGlow {
             0% { 
-                opacity: 0; 
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); 
+                opacidad: 0; 
+                sombra de caja: 0 0 0 0 rgba(255, 215, 0, 0); 
             }
             20% { 
-                opacity: 1; 
-                box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7); 
+                opacidad: 1; 
+                sombra de caja: 0 0 20px 10px rgba(255, 215, 0, 0.7); 
             }
             80% { 
-                opacity: 1; 
-                box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7);
-            }
+                opacidad: 1; 
+                sombra de caja: 0 0 20px 10px rgba(255, 215, 0, 0.7);}
             100% { 
-                opacity: 0; 
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); 
+                opacidad: 0; 
+                sombra de caja: 0 0 0 0 rgba(255, 215, 0, 0); 
+            }
+        }
+        @keyframes slideInLeft {
+            0% { opacidad: 0; transform: translatex(-100%) translateY(-50%); }
+            100% { opacidad: 1; transform: translatex(0) translateY(-50%); }
+        }
+        @keyframes slideInRight {
+            0% { opacidad: 0; transform: translatex(100%) translateY(-50%); }
+            100% { opacidad: 1; transform: translatex(0) translateY(-50%); }
+        }
+        @keyframes slideInButton {
+            0% { opacidad: 0; transform: translateY(50px); }
+            100% { opacidad: 1; transform: translateY(0); }
+        }
+        
+        /* Solo añadimos media queries para hacer responsivo sin cambiar el diseño original */
+        @media (max-width: 768px) {
+            .logo-contenedor {
+                ancho: 80vw;
+                altura: 80vw;
+                ancho máximo: 500px;
+                altura máxima: 500px;
+            }
+            
+            .stars-izquierda, .stars-derecha {
+                ancho: 35vw;
+                ancho máximo: 300px;
             }
         }
         
-        @keyframes slideInLeft {
-            0% { opacity: 0; transform: translateX(-100%) translateY(-50%); }
-            100% { opacity: 1; transform: translateX(0) translateY(-50%); }
-        }
-        
-        @keyframes slideInRight {
-            0% { opacity: 0; transform: translateX(100%) translateY(-50%); }
-            100% { opacity: 1; transform: translateX(0) translateY(-50%); }
-        }
-        
-        @keyframes slideInButton {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @media (max-width: 480px) {
+            .logo-sección {
+                margen-top: 60px;
+            }
+            
+            .stars-contenedor {
+                superior: 320px;
+            }
+            
+            .stars-left {
+                izquierda: -60px;
+            }
+            
+            .stars-right {
+                derecha: -60px;
+            }
+            
+            .botón {
+                ancho: 90%;
+                relleno: 12px 20px;
+            }
         }
     </style>
 </head>
@@ -256,7 +223,7 @@
             </div>
         </div>
         
-        <button class="button" onclick="location.href='inicio.html'">INICIO</button>
+        <botón class="botón" onclick="ubicación.href='inicio.html'">INICIO</button>
     </div>
 </body>
 </html>
