@@ -31,41 +31,43 @@
             background-size: 30px 30px;
             background-color: #000;
         }
+
         @keyframes draw-line-left {
-    0% { width: 0; height: 0; opacity: 0; transform: translate(0, 0); }
-    50% { width: 100px; height: 0; opacity: 1; transform: translate(-10px, 10px); }
-    100% { width: 100px; height: 100px; opacity: 1; transform: translate(0, 0); }
-}
+            0% { width: 0; height: 0; opacity: 0; transform: translate(0, 0); }
+            50% { width: 100px; height: 0; opacity: 1; transform: translate(-10px, 10px); }
+            100% { width: 100px; height: 100px; opacity: 1; transform: translate(0, 0); }
+        }
 
-@keyframes draw-line-right {
-    0% { width: 0; height: 0; opacity: 0; transform: translate(0, 0); }
-    50% { width: 100px; height: 0; opacity: 1; transform: translate(10px, -10px); }
-    100% { width: 100px; height: 100px; opacity: 1; transform: translate(0, 0); }
-}
+        @keyframes draw-line-right {
+            0% { width: 0; height: 0; opacity: 0; transform: translate(0, 0); }
+            50% { width: 100px; height: 0; opacity: 1; transform: translate(10px, -10px); }
+            100% { width: 100px; height: 100px; opacity: 1; transform: translate(0, 0); }
+        }
 
-.header::before, .header::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 3px solid #FFD700;
-}
+        .header::before, .header::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 3px solid #FFD700;
+        }
 
-.header::before {
-    top: 20px;
-    left: 20px;
-    border-right: none;
-    border-bottom: none;
-    animation: draw-line-left 2s forwards ease-in-out infinite;
-}
+        .header::before {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+            animation: draw-line-left 2s forwards ease-in-out infinite;
+        }
 
-.header::after {
-    bottom: 600px;
-    right: 20px;
-    border-left: none;
-    border-top: none;
-    animation: draw-line-right 2s forwards ease-in-out infinite;
-}
+        .header::after {
+            bottom: 700px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+            animation: draw-line-right 2s forwards ease-in-out infinite;
+        }
+        
         .logo-container {
             position: relative;
             display: flex;
@@ -86,13 +88,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #111; /* Fondo para cuando no hay video */
         }
         
         .logo-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: translateY(10px); /* Mueve el video un poco más abajo */
+            transform: translateY(10px);
         }
         
         .logo-text {
@@ -106,7 +109,6 @@
             display: inline-block;
         }
         
-        /* Decorative elements around the logo section */
         .logo-decorative-line {
             position: absolute;
             height: 2px;
@@ -174,7 +176,7 @@
         
         .video-container {
             width: 100%;
-            height: 400px;
+            height: 600px;
             background-color: #111;
             margin: 30px 0;
             display: flex;
@@ -187,26 +189,34 @@
             border-radius: 8px;
         }
         
-        .video-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid #FFD700;
-            border-radius: 8px;
-            pointer-events: none;
-            opacity: 0.3;
+        .video-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
         }
         
-        .video-container iframe,
         .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border: none;
             display: block;
+            background-color: #000;
+        }
+        
+        .video-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #FFD700;
+            box-sizing: border-box;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         .video-message {
@@ -271,9 +281,8 @@
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
         }
         
-        /* Modified navigation styles with skewed container but normal text */
         .nav-wrapper {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 15px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -282,13 +291,14 @@
             max-width: 80%;
             margin: 0 auto;
             transform: skew(30deg);
+            border: 1px solid #000000;
         }
         
         .navigation {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transform: skew(-30deg); /* Contra-inclinación para el contenido */
+            transform: skew(-30deg);
         }
         
         .menu {
@@ -309,6 +319,28 @@
             text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
         }
         
+        @keyframes menu-glow {
+            0% {
+                color: #FFD700;
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                color: #FFF;
+                text-shadow: 0 0 20px rgba(255, 215, 0, 1), 
+                             0 0 30px rgba(255, 215, 0, 0.8),
+                             0 0 40px rgba(255, 215, 0, 0.6);
+            }
+            100% {
+                color: #FFD700;
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            }
+        }
+        
+        .menu-item:hover {
+            animation: menu-glow 1.5s infinite;
+            transform: translateY(-3px);
+        }
+        
         .menu-item:before {
             content: '';
             position: absolute;
@@ -318,10 +350,7 @@
             height: 2px;
             background-color: #FFD700;
             transition: all 0.3s ease;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-3px);
+            box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.7);
         }
         
         .menu-item:hover:before {
@@ -390,11 +419,103 @@
             pointer-events: none;
         }
 
-        /* Adjust header structure so navigation is above video */
         .header-content {
             position: relative;
             display: flex;
             flex-direction: column;
+        }
+        
+        /* Nuevos estilos para los controles de video */
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-top: 1px solid #FFD700;
+        }
+        
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+        
+        .video-control-button {
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-control-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+        
+        .video-control-button i {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        
+        .progress-bar-container {
+            flex-grow: 1;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 15px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #FFD700;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.1s linear;
+        }
+        
+        .progress-bar-hover {
+            position: absolute;
+            height: 100%;
+            background-color: rgba(255, 215, 0, 0.5);
+            width: 0%;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+        
+        .time-display {
+            color: #FFD700;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            min-width: 90px;
+            text-align: right;
+        }
+
+        /* Fallback para el logo si no hay video */
+        .logo-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FFD700;
         }
     </style>
 </head>
@@ -403,7 +524,8 @@
         <div class="header">
             <div class="logo-container">
                 <div class="logo-video-container" id="logo-video-container">
-                    <!-- Aquí irá el video-logo -->
+                    <!-- Aquí irá el logo animado. Si no se carga, mostrará un shield icon como respaldo -->
+                    <div class="logo-fallback"><i class="fas fa-shield-alt"></i></div>
                     <div class="logo-shine"></div>
                     <div class="logo-badge">
                         <i class="fas fa-shield-alt"></i>
@@ -416,7 +538,6 @@
             </div>
             
             <div class="header-content">
-                <!-- Navigation positioned above the video -->
                 <div class="nav-wrapper">
                     <div class="navigation">
                         <div class="menu">
@@ -437,7 +558,33 @@
                 </div>
                 
                 <div class="video-container" id="video-container">
+                    <!-- Video principal -->
+                    <div class="video-wrapper">
+                        <video id="main-video" autoplay loop muted playsinline>
+                            <source src="larfo.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="video-border"></div>
+                    </div>
                     <div class="video-message" id="video-message">Video no disponible</div>
+                    
+                    <!-- Nuevos controles de video que aparecen al hacer hover -->
+                    <div class="video-controls" id="video-controls">
+                        <div class="video-control-button" id="play-pause-button" onclick="togglePlayPause()">
+                            <i class="fas fa-pause" id="play-pause-icon"></i>
+                        </div>
+                        
+                        <div class="video-control-button" id="sound-control" onclick="toggleSound()">
+                            <i class="fas fa-volume-mute" id="sound-icon"></i>
+                        </div>
+                        
+                        <div class="progress-bar-container" id="progress-container">
+                            <div class="progress-bar" id="progress-bar"></div>
+                            <div class="progress-bar-hover" id="progress-bar-hover"></div>
+                        </div>
+                        
+                        <div class="time-display" id="time-display">0:00 / 0:00</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -448,6 +595,94 @@
     </div>
 
     <script>
+        // Variables para controlar el estado del video
+        let soundEnabled = false; // Inicialmente silenciado
+        let isPlaying = true; // El video comienza reproduciéndose
+        
+        // Función para alternar entre reproducir y pausar
+        function togglePlayPause() {
+            const video = document.getElementById('main-video');
+            const playPauseIcon = document.getElementById('play-pause-icon');
+            
+            if (isPlaying) {
+                video.pause();
+                isPlaying = false;
+                playPauseIcon.className = 'fas fa-play';
+            } else {
+                video.play();
+                isPlaying = true;
+                playPauseIcon.className = 'fas fa-pause';
+            }
+        }
+        
+        // Función para alternar el sonido
+        function toggleSound() {
+            const video = document.getElementById('main-video');
+            const soundIcon = document.getElementById('sound-icon');
+            
+            if (video) {
+                if (soundEnabled) {
+                    video.muted = true;
+                    soundEnabled = false;
+                    soundIcon.className = 'fas fa-volume-mute';
+                } else {
+                    video.muted = false;
+                    soundEnabled = true;
+                    soundIcon.className = 'fas fa-volume-up';
+                }
+            }
+        }
+        
+        // Función para formatear el tiempo en formato mm:ss
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }
+        
+        // Función para actualizar la barra de progreso
+        function updateProgressBar() {
+            const video = document.getElementById('main-video');
+            const progressBar = document.getElementById('progress-bar');
+            const timeDisplay = document.getElementById('time-display');
+            
+            if (video && progressBar && timeDisplay) {
+                // Actualizar la barra de progreso
+                const progress = (video.currentTime / video.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                // Actualizar el tiempo mostrado
+                timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+            }
+            
+            // Actualizar cada 100ms
+            setTimeout(updateProgressBar, 100);
+        }
+        
+        // Función para saltar a un punto específico del video
+        function skipToPosition(event) {
+            const video = document.getElementById('main-video');
+            const progressContainer = document.getElementById('progress-container');
+            const rect = progressContainer.getBoundingClientRect();
+            const pos = (event.clientX - rect.left) / rect.width;
+            
+            if (video) {
+                video.currentTime = pos * video.duration;
+            }
+        }
+        
+        // Función para mostrar la posición del hover en la barra de progreso
+        function showHoverPosition(event) {
+            const progressContainer = document.getElementById('progress-container');
+            const progressBarHover = document.getElementById('progress-bar-hover');
+            const rect = progressContainer.getBoundingClientRect();
+            const pos = (event.clientX - rect.left) / rect.width;
+            
+            if (progressBarHover) {
+                progressBarHover.style.width = `${pos * 100}%`;
+            }
+        }
+        
         function addRippleEffect(event) {
             const button = event.currentTarget;
             
@@ -471,93 +706,121 @@
             }, 800);
         }
         
-        // Función para insertar el video del logo
-        function insertLogoVideo(videoSource) {
+        // Función para cargar el logo en modo seguro
+        function loadLogoVideo() {
             const container = document.getElementById('logo-video-container');
-            
-            // Mantener los elementos decorativos
-            const existingElements = container.innerHTML;
             
             // Crear el elemento de video para el logo
             const video = document.createElement('video');
             video.className = 'logo-video';
-            video.src = videoSource;
             video.autoplay = true;
             video.muted = true;
             video.loop = true;
             video.playsinline = true;
             
-            // Insertar el video manteniendo los elementos decorativos
-            container.insertBefore(video, container.firstChild);
-        }
-        
-        // Función mejorada para insertar un video principal
-        function insertMainVideo(videoType, videoSource) {
-            const container = document.getElementById('video-container');
-            const videoMessage = document.getElementById('video-message');
-            container.innerHTML = '';
-            container.appendChild(videoMessage);
+            // Intentar cargar el video desde diferentes fuentes
+            const sources = ['logo-animado.mp4', 'logo.mp4', 'logo-video.mp4'];
             
-            if (videoType === 'youtube') {
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.youtube.com/embed/${videoSource}?autoplay=1&mute=1&loop=1&playlist=${videoSource}&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&controls=0`;
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                iframe.allowFullscreen = true;
+            let sourceLoaded = false;
+            
+            // Probar cada fuente
+            for (let i = 0; i < sources.length; i++) {
+                const testVideo = document.createElement('video');
+                testVideo.src = sources[i];
                 
-                iframe.onerror = function() {
-                    videoMessage.style.display = 'block';
-                };
-                
-                container.appendChild(iframe);
-                
-            } else if (videoType === 'file') {
-                const video = document.createElement('video');
-                video.src = videoSource;
-                video.autoplay = true;
-                video.muted = true;
-                video.loop = true;
-                video.controls = false;
-                video.preload = "auto";
-                video.playsinline = true;
-                
-                video.onerror = function() {
-                    videoMessage.style.display = 'block';
-                };
-                
-                video.addEventListener('loadeddata', function() {
-                    if (video.readyState >= 2) {
-                        video.play()
-                            .then(() => {
-                                videoMessage.style.display = 'none';
-                            })
-                            .catch(error => {
-                                console.error("Error al reproducir el video:", error);
-                                videoMessage.style.display = 'block';
-                            });
+                testVideo.addEventListener('canplay', function() {
+                    if (!sourceLoaded) {
+                        sourceLoaded = true;
+                        video.src = sources[i];
+                        
+                        // Remover el fallback y añadir el video
+                        const fallback = container.querySelector('.logo-fallback');
+                        if (fallback) {
+                            container.removeChild(fallback);
+                        }
+                        
+                        container.insertBefore(video, container.firstChild);
                     }
                 });
                 
-                container.appendChild(video);
+                testVideo.addEventListener('error', function() {
+                    // Si es la última fuente y ninguna ha funcionado, usar fallback
+                    if (i === sources.length - 1 && !sourceLoaded) {
+                        console.log("No se pudo cargar ningún video para el logo");
+                    }
+                });
+                
+                // Intentar cargar
+                testVideo.load();
+            }
+            
+            // Si después de 3 segundos no se ha cargado ninguna fuente, usar un logo estático
+            setTimeout(function() {
+                if (!sourceLoaded) {
+                    // Ya tenemos el fallback en HTML, no necesitamos hacer nada más
+                }
+            }, 3000);
+        }
+        
+        // Función para verificar el video principal
+        function checkMainVideo() {
+            const video = document.getElementById('main-video');
+            const videoMessage = document.getElementById('video-message');
+            
+            // Verificar si el video está cargando correctamente
+            video.addEventListener('loadeddata', function() {
+                videoMessage.style.display = 'none';
+                // Iniciar la actualización de la barra de progreso una vez que el video esté cargado
+                updateProgressBar();
+            });
+            
+            video.addEventListener('error', function() {
+                videoMessage.style.display = 'block';
+                console.log("Error al cargar el video principal");
+            });
+            
+            // Si después de 5 segundos el video no está reproduciendo, mostrar mensaje
+            setTimeout(function() {
+                if (video.readyState < 3) {
+                    videoMessage.style.display = 'block';
+                }
+            }, 5000);
+        }
+        
+        // Configurar eventos para la barra de progreso
+        function setupProgressEvents() {
+            const progressContainer = document.getElementById('progress-container');
+            
+            if (progressContainer) {
+                // Evento para saltar a una posición al hacer clic
+                progressContainer.addEventListener('click', function(event) {
+                    skipToPosition(event);
+                });
+                
+                // Eventos para mostrar la posición del hover
+                progressContainer.addEventListener('mousemove', function(event) {
+                    showHoverPosition(event);
+                });
+                
+                progressContainer.addEventListener('mouseleave', function() {
+                    const progressBarHover = document.getElementById('progress-bar-hover');
+                    if (progressBarHover) {
+                        progressBarHover.style.width = '0%';
+                    }
+                });
             }
         }
         
-        // Cargar los videos cuando el DOM esté listo
+        // Cargar todo cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', function() {
-            // Cargar el video del logo
-            insertLogoVideo('logo-animado.mp4');
+            // Cargar el logo
+            loadLogoVideo();
             
-            // Cargar el video principal con un pequeño retraso
-            setTimeout(function() {
-                insertMainVideo('file', 'larfo.mp4');
-                
-                // Función de respaldo para el video principal
-                setTimeout(function() {
-                    const video = document.querySelector('#video-container video');
-                    if (!video || video.readyState < 2) {
-                        document.getElementById('video-message').style.display = 'block';
-                    }
-                }, 3000);
-            }, 100);
+            // Verificar el video principal
+            checkMainVideo();
+            
+            // Configurar eventos para la barra de progreso
+            setupProgressEvents();
         });
     </script>
 </body>
