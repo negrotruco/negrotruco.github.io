@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.W.A.T BODYGUARDS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            padding: 50px 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10,1 L19,5.5 L19,14.5 L10,19 L1,14.5 L1,5.5 Z" stroke="%23333" fill="none" stroke-width="0.5"/></svg>');
+            background-size: 30px 30px;
+            background-color: #000;
+        }
+        
+        .header::before, .header::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #FFD700;
+        }
+        
+        .header::before {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .header::after {
+            bottom: 600px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .logo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-video-container {
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateY(10px); /* Mueve el video un poco más abajo */
+        }
+        
+        .logo-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFD700;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: glow 2s infinite alternate;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Decorative elements around the logo section */
+        .logo-decorative-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            width: 80%;
+            bottom: -10px;
+            left: 10%;
+        }
+        
+        .logo-badge {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 30px;
+            height: 30px;
+            background-color: #111;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .logo-badge i {
+            color: #FFD700;
+            font-size: 14px;
+        }
+        
+        .logo-shine {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            animation: shine 4s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes shine {
+            0%, 100% {
+                width: 0;
+                height: 0;
+                opacity: 0.8;
+            }
+            50% {
+                width: 150%;
+                height: 150%;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+        }
+        
+        .video-container {
+            width: 100%;
+            height: 400px;
+            background-color: #111;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+        }
+        
+        .video-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            display: block;
+        }
+        
+        .video-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            border-radius: 5px;
+            border: 1px solid #FFD700;
+            z-index: 2;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .quote-section {
+            text-align: center;
+            margin: 20px 0 40px 0;
+        }
+        
+        .quote-button {
+            font-size: 20px;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #FFD700;
+            padding: 10px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .quote-button:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #FFD700;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .quote-button:hover {
+            color: #000;
+        }
+        
+        .quote-button:hover:before {
+            height: 100%;
+        }
+        
+        .quote-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+        
+        /* Modified navigation styles with skewed container but normal text */
+        .nav-wrapper {
+            background-color: #fff;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            max-width: 80%;
+            margin: 0 auto;
+            transform: skew(30deg);
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: skew(-30deg); /* Contra-inclinación para el contenido */
+        }
+        
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-item {
+            margin-right: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 15px;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FFD700;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .menu-item:hover:before {
+            width: 100%;
+        }
+        
+        .menu-item:active {
+            transform: scale(0.95) translateY(0);
+        }
+        
+        .social-icons {
+            display: flex;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            margin-left: 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        
+        .social-icon:active {
+            transform: scale(1.1);
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .facebook {
+            background-color: #1877F2;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.3);
+            width: 10px;
+            height: 10px;
+            animation: ripple 0.8s ease-out;
+            pointer-events: none;
+        }
+
+        /* Adjust header structure so navigation is above video */
+        .header-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo-video-container" id="logo-video-container">
+                    <!-- Aquí irá el video-logo -->
+                    <div class="logo-shine"></div>
+                    <div class="logo-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    S.W.A.T BODYGUARDS
+                    <div class="logo-decorative-line"></div>
+                </div>
+            </div>
+            
+            <div class="header-content">
+                <!-- Navigation positioned above the video -->
+                <div class="nav-wrapper">
+                    <div class="navigation">
+                        <div class="menu">
+                            <a href="#" class="menu-item" onclick="addRippleEffect(event)">Inicio</a>
+                            <a href="#" class="menu-item" onclick="addRippleEffect(event)">Nosotros</a>
+                            <a href="#" class="menu-item" onclick="addRippleEffect(event)">Servicios</a>
+                        </div>
+                        
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/tu_perfil_instagram" target="_blank" class="social-icon instagram" onclick="addRippleEffect(event)">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/tu_pagina_facebook" target="_blank" class="social-icon facebook" onclick="addRippleEffect(event)">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-container" id="video-container">
+                    <div class="video-message" id="video-message">Video no disponible</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quote-section">
+            <button class="quote-button" onclick="addRippleEffect(event)">Solicitar Cotización</button>
+        </div>
+    </div>
+
+    <script>
+        function addRippleEffect(event) {
+            const button = event.currentTarget;
+            
+            const ripple = document.createElement("span");
+            ripple.classList.add("ripple");
+            
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            
+            const posX = event.clientX - rect.left - size / 2;
+            const posY = event.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${posX}px`;
+            ripple.style.top = `${posY}px`;
+            
+            button.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 800);
+        }
+        
+        // Función para insertar el video del logo
+        function insertLogoVideo(videoSource) {
+            const container = document.getElementById('logo-video-container');
+            
+            // Mantener los elementos decorativos
+            const existingElements = container.innerHTML;
+            
+            // Crear el elemento de video para el logo
+            const video = document.createElement('video');
+            video.className = 'logo-video';
+            video.src = videoSource;
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsinline = true;
+            
+            // Insertar el video manteniendo los elementos decorativos
+            container.insertBefore(video, container.firstChild);
+        }
+        
+        // Función mejorada para insertar un video principal
+        function insertMainVideo(videoType, videoSource) {
+            const container = document.getElementById('video-container');
+            const videoMessage = document.getElementById('video-message');
+            container.innerHTML = '';
+            container.appendChild(videoMessage);
+            
+            if (videoType === 'youtube') {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/${videoSource}?autoplay=1&mute=1&loop=1&playlist=${videoSource}&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&controls=0`;
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                
+                iframe.onerror = function() {
+                    videoMessage.style.display = 'block';
+                };
+                
+                container.appendChild(iframe);
+                
+            } else if (videoType === 'file') {
+                const video = document.createElement('video');
+                video.src = videoSource;
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
+                video.controls = false;
+                video.preload = "auto";
+                video.playsinline = true;
+                
+                video.onerror = function() {
+                    videoMessage.style.display = 'block';
+                };
+                
+                video.addEventListener('loadeddata', function() {
+                    if (video.readyState >= 2) {
+                        video.play()
+                            .then(() => {
+                                videoMessage.style.display = 'none';
+                            })
+                            .catch(error => {
+                                console.error("Error al reproducir el video:", error);
+                                videoMessage.style.display = 'block';
+                            });
+                    }
+                });
+                
+                container.appendChild(video);
+            }
+        }
+        
+        // Cargar los videos cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar el video del logo
+            insertLogoVideo('logo-animado.mp4');
+            
+            // Cargar el video principal con un pequeño retraso
+            setTimeout(function() {
+                insertMainVideo('file', 'larfo.mp4');
+                
+                // Función de respaldo para el video principal
+                setTimeout(function() {
+                    const video = document.querySelector('#video-container video');
+                    if (!video || video.readyState < 2) {
+                        document.getElementById('video-message').style.display = 'block';
+                    }
+                }, 3000);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
