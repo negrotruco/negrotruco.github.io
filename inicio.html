@@ -6,6 +6,13 @@
     <title>S.W.A.T BODYGUARDS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -13,6 +20,7 @@
             background-color: #000;
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
         .container {
@@ -22,6 +30,7 @@
             padding: 20px;
         }
         
+        /* Header y logo */
         .header {
             position: relative;
             width: 100%;
@@ -76,6 +85,16 @@
             margin-bottom: 30px;
         }
         
+        @media (max-width: 767px) {
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .logo-video-container {
+                margin-bottom: 15px;
+            }
+        }
+        
         .logo-video-container {
             width: 120px;
             height: 120px;
@@ -88,7 +107,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111; /* Fondo para cuando no hay video */
+            background-color: #111;
         }
         
         .logo-video {
@@ -107,6 +126,13 @@
             animation: glow 2s infinite alternate;
             position: relative;
             display: inline-block;
+        }
+        
+        @media (max-width: 767px) {
+            .logo-text {
+                font-size: 24px;
+                text-align: center;
+            }
         }
         
         .logo-decorative-line {
@@ -174,6 +200,7 @@
             }
         }
         
+        /* Contenedor de video */
         .video-container {
             width: 100%;
             height: 600px;
@@ -189,6 +216,30 @@
             border-radius: 8px;
         }
         
+        @media (max-width: 1199px) {
+            .video-container {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .video-container {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .video-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-container {
+                height: 250px;
+            }
+        }
+        
         .video-wrapper {
             position: relative;
             display: inline-block;
@@ -199,7 +250,7 @@
         .video-container video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Cambiado de cover a contain para evitar deformación */
             border: none;
             display: block;
             background-color: #000;
@@ -233,6 +284,7 @@
             display: none;
         }
         
+        /* Sección de cotización */
         .quote-section {
             text-align: center;
             margin: 20px 0 40px 0;
@@ -254,6 +306,13 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+        }
+        
+        @media (max-width: 767px) {
+            .quote-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
         }
         
         .quote-button:before {
@@ -281,6 +340,7 @@
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
         }
         
+        /* Navegación */
         .nav-wrapper {
             background-color: #ffffff;
             padding: 15px 30px;
@@ -294,6 +354,20 @@
             border: 1px solid #000000;
         }
         
+        @media (max-width: 991px) {
+            .nav-wrapper {
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .nav-wrapper {
+                transform: skew(0);
+                padding: 10px 15px;
+                max-width: 100%;
+            }
+        }
+        
         .navigation {
             display: flex;
             justify-content: space-between;
@@ -301,9 +375,22 @@
             transform: skew(-30deg);
         }
         
+        @media (max-width: 767px) {
+            .navigation {
+                flex-direction: column;
+                transform: skew(0);
+            }
+            
+            .menu {
+                margin-bottom: 15px;
+            }
+        }
+        
         .menu {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .menu-item {
@@ -317,6 +404,21 @@
             padding: 5px 15px;
             transition: all 0.3s ease;
             text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 991px) {
+            .menu-item {
+                font-size: 20px;
+                margin-right: 20px;
+                padding: 5px 10px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .menu-item {
+                font-size: 18px;
+                margin: 5px 10px;
+            }
         }
         
         @keyframes menu-glow {
@@ -381,6 +483,15 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         
+        @media (max-width: 767px) {
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                margin: 0 8px;
+            }
+        }
+        
         .social-icon:hover {
             transform: scale(1.2) rotate(5deg);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
@@ -425,7 +536,7 @@
             flex-direction: column;
         }
         
-        /* Nuevos estilos para los controles de video */
+        /* Controles de video */
         .video-controls {
             position: absolute;
             bottom: 0;
@@ -440,6 +551,27 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             border-top: 1px solid #FFD700;
+        }
+        
+        @media (max-width: 767px) {
+            .video-controls {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+            
+            .progress-bar-container {
+                width: 100%;
+                margin: 10px 0;
+                order: 3;
+            }
+            
+            .time-display {
+                order: 4;
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 5px;
+            }
         }
         
         .video-container:hover .video-controls {
@@ -458,6 +590,18 @@
             cursor: pointer;
             margin-right: 15px;
             transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 767px) {
+            .video-control-button {
+                width: 36px;
+                height: 36px;
+                margin-right: 10px;
+            }
+            
+            .video-control-button i {
+                font-size: 16px;
+            }
         }
         
         .video-control-button:hover {
@@ -517,9 +661,250 @@
             font-size: 24px;
             color: #FFD700;
         }
+
+        /* Estilos para el dropdown de servicios */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 314px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 767px) {
+            .dropdown-menu {
+                width: 250px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        @media (max-width: 767px) {
+            .dropdown-item {
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Tooltip para información de servicios */
+        .tooltip {
+            position: fixed;
+            background-color: #111;
+            color: #fff;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            max-width: 350px;
+            display: none;
+            pointer-events: none;
+        }
+
+        .tooltip h4 {
+            color: #FFD700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #FFD700;
+            padding-bottom: 5px;
+        }
+
+        .tooltip ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .tooltip li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .tooltip li:before {
+            content: '✓';
+            color: #FFD700;
+            position: absolute;
+            left: -20px;
+            font-weight: bold;
+        }
+
+        /* Estilos para WhatsApp */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        
+        @media (max-width: 767px) {
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-button i {
+                font-size: 24px;
+            }
+        }
+
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle at center, 
+                rgba(37, 211, 102, 0.4) 0%, 
+                rgba(37, 211, 102, 0.1) 70%
+            );
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.5s ease;
+            border-radius: 50%;
+        }
+
+        .whatsapp-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 0;
+            height: 0;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover::before,
+        .whatsapp-button:hover::after {
+            transform: translate(-50%, -50%) scale(5);
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button:active {
+            transform: scale(0.95);
+        }
+
+        .whatsapp-button i {
+            position: relative;
+            z-index: 10;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .whatsapp-button:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .whatsapp-button {
+            animation: bounce-in 0.8s ease-in-out;
+        }
+
+        /* Efecto de pulso continuo */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.33);
+            }
+            80%, 100% {
+                opacity: 0;
+            }
+        }
+
+        .whatsapp-button::before {
+            animation: pulse-ring 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+        
+        /* Media queries adicionales para dispositivos muy pequeños */
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .menu-item {
+                font-size: 16px;
+                margin: 3px 5px;
+                padding: 3px 8px;
+            }
+            
+            .quote-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Tooltip para información de servicios -->
+    <div id="tooltip" class="tooltip"></div>
+
     <div class="container">
         <div class="header">
             <div class="logo-container">
@@ -543,7 +928,19 @@
                         <div class="menu">
                             <a href="#" class="menu-item" onclick="addRippleEffect(event)">Inicio</a>
                             <a href="#" class="menu-item" onclick="addRippleEffect(event)">Nosotros</a>
-                            <a href="#" class="menu-item" onclick="addRippleEffect(event)">Servicios</a>
+                            
+                            <!-- Reemplazamos el enlace de Servicios con nuestro dropdown -->
+                            <div class="dropdown-container" id="servicios-dropdown">
+                                <a href="#" class="menu-item" onclick="toggleServiciosDropdown(event)">
+                                    Servicios <span id="dropdown-arrow">▼</span>
+                                </a>
+                                
+                                <div class="dropdown-menu" id="servicios-menu" style="display: none;">
+                                    <a href="curso-escoltas.html" class="dropdown-item" data-service="escoltas" onclick="addRippleEffect(event)">CURSO DE ESCOLTAS</a>
+                                    <a href="curso-vigilancia.html" class="dropdown-item" data-service="vigilancia" onclick="addRippleEffect(event)">CURSO DE VIGILANCIA</a>
+                                    <a href="curso-conduccion.html" class="dropdown-item" data-service="conduccion" onclick="addRippleEffect(event)">CURSO DE CONDUCCION</a>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="social-icons">
@@ -568,7 +965,7 @@
                     </div>
                     <div class="video-message" id="video-message">Video no disponible</div>
                     
-                    <!-- Nuevos controles de video que aparecen al hacer hover -->
+                    <!-- Controles de video que aparecen al hacer hover -->
                     <div class="video-controls" id="video-controls">
                         <div class="video-control-button" id="play-pause-button" onclick="togglePlayPause()">
                             <i class="fas fa-pause" id="play-pause-icon"></i>
@@ -592,6 +989,11 @@
         <div class="quote-section">
             <button class="quote-button" onclick="addRippleEffect(event)">Solicitar Cotización</button>
         </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-button" id="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
     </div>
 
     <script>
@@ -811,6 +1213,110 @@
             }
         }
         
+        // Función para manejar el dropdown de servicios
+        function toggleServiciosDropdown(event) {
+            event.preventDefault();
+            const menu = document.getElementById('servicios-menu');
+            const arrow = document.getElementById('dropdown-arrow');
+            
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block';
+                arrow.textContent = '▲';
+            } else {
+                menu.style.display = 'none';
+                arrow.textContent = '▼';
+            }
+            
+            addRippleEffect(event);
+            
+            // Cerrar el dropdown cuando se hace clic fuera de él
+            document.addEventListener('click', function closeDropdown(e) {
+                const dropdownContainer = document.getElementById('servicios-dropdown');
+                if (!dropdownContainer.contains(e.target)) {
+                    menu.style.display = 'none';
+                    arrow.textContent = '▼';
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        // Información de los servicios para los tooltips
+        const serviciosInfo = {
+            escoltas: {
+                title: "CURSO DE ESCOLTAS",
+                items: [
+                    "Curso internacional con especialización en conducción de manejo defensivo y evasivo de vehículos",
+                    "Curso avanzado con especialización en protección a dignatarios y jefes de seguridad",
+                    "Curso internacional de instructores en esquemas de protección"
+                ]
+            },
+            vigilancia: {
+                title: "CURSO DE VIGILANCIA",
+                items: [
+                    "Curso de fundamentacion en vigilancia",
+                    "Cursos para quienes son vigilantes",
+                    "Re entrenamientos"
+                ]
+            },
+            conduccion: {
+                title: "CURSO DE CONDUCCION",
+                items: [
+                    "Precios y categorías"
+                ]
+            }
+        };
+        
+        // Función para mostrar el tooltip con la información del servicio
+        function showServiceTooltip(event) {
+            const serviceType = event.currentTarget.getAttribute('data-service');
+            const tooltip = document.getElementById('tooltip');
+            
+            if (serviceType && serviciosInfo[serviceType]) {
+                const info = serviciosInfo[serviceType];
+                
+                // Crear el contenido del tooltip
+                let content = `<h4>${info.title}</h4><ul>`;
+                info.items.forEach(item => {
+                    content += `<li>${item}</li>`;
+                });
+                content += `</ul>`;
+                
+                tooltip.innerHTML = content;
+                
+                // Posicionar el tooltip cerca del elemento
+                const rect = event.currentTarget.getBoundingClientRect();
+                
+                // Ajustar posición según el tamaño de la pantalla
+                if (window.innerWidth < 768) {
+                    tooltip.style.left = '50%';
+                    tooltip.style.transform = 'translateX(-50%)';
+                    tooltip.style.top = (rect.bottom + 10) + 'px';
+                } else {
+                    tooltip.style.left = (rect.right + 10) + 'px';
+                    tooltip.style.top = rect.top + 'px';
+                    tooltip.style.transform = 'none';
+                }
+                
+                // Mostrar el tooltip
+                tooltip.style.display = 'block';
+            }
+        }
+        
+        // Función para ocultar el tooltip
+        function hideServiceTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
+        
+        // Configuración del número de WhatsApp
+        const WHATSAPP_NUMBER = '573223347805'; // Formato internacional sin '+'
+        const INITIAL_MESSAGE = encodeURIComponent('Hola, estoy interesado en los servicios de S.W.A.T BODYGUARDS. ¿Podrían proporcionarme más información?');
+
+        // Función para abrir WhatsApp directamente
+        function openWhatsApp() {
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${INITIAL_MESSAGE}`, '_blank');
+        }
+        
         // Cargar todo cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', function() {
             // Cargar el logo
@@ -821,152 +1327,17 @@
             
             // Configurar eventos para la barra de progreso
             setupProgressEvents();
+            
+            // Agregar evento al botón de WhatsApp
+            document.getElementById('whatsapp-button').addEventListener('click', openWhatsApp);
+            
+            // Configurar eventos para los tooltips de servicios
+            const serviciosItems = document.querySelectorAll('.dropdown-item[data-service]');
+            serviciosItems.forEach(item => {
+                item.addEventListener('mouseenter', showServiceTooltip);
+                item.addEventListener('mouseleave', hideServiceTooltip);
+            });
         });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <!-- Contenido anterior del head -->
-    <style>
-        /* Estilos anteriores */
-        
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid white;
-            overflow: hidden;
-            perspective: 1000px;
-        }
-
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(
-                circle at center, 
-                rgba(37, 211, 102, 0.4) 0%, 
-                rgba(37, 211, 102, 0.1) 70%
-            );
-            transform: scale(0);
-            opacity: 0;
-            transition: all 0.5s ease;
-            border-radius: 50%;
-        }
-
-        .whatsapp-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 0;
-            height: 0;
-            background-color: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-button:hover::before,
-        .whatsapp-button:hover::after {
-            transform: translate(-50%, -50%) scale(5);
-            opacity: 1;
-            width: 100%;
-            height: 100%;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-button:active {
-            transform: scale(0.95);
-        }
-
-        .whatsapp-button i {
-            position: relative;
-            z-index: 10;
-            font-size: 30px;
-            transition: transform 0.3s ease;
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .whatsapp-button:hover i {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        @keyframes bounce-in {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            70% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .whatsapp-button {
-            animation: bounce-in 0.8s ease-in-out;
-        }
-
-        /* Efecto de pulso continuo */
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.33);
-            }
-            80%, 100% {
-                opacity: 0;
-            }
-        }
-
-        .whatsapp-button::before {
-            animation: pulse-ring 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-        }
-    </style>
-</head>
-<body>
-    <!-- Contenido anterior del body -->
-
-    <!-- WhatsApp Button -->
-    <div class="whatsapp-button" id="whatsapp-button">
-        <i class="fab fa-whatsapp"></i>
-    </div>
-
-    <script>
-        // Configuración del número de WhatsApp (puedes cambiarlo fácilmente aquí)
-        const WHATSAPP_NUMBER = '573223347805'; // Formato internacional sin '+'
-        const INITIAL_MESSAGE = encodeURIComponent('Hola, estoy interesado en los servicios de S.W.A.T BODYGUARDS. ¿Podrían proporcionarme más información?');
-
-        // Función para abrir WhatsApp directamente
-        function openWhatsApp() {
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${INITIAL_MESSAGE}`, '_blank');
-        }
-
-        // Agregar evento al botón de WhatsApp
-        document.getElementById('whatsapp-button').addEventListener('click', openWhatsApp);
     </script>
 </body>
 </html>
